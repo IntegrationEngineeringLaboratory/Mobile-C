@@ -61,12 +61,23 @@ Mobile-C Library Compilation
 
 - Configure the build system
 
-    cmake .. 
+   In Unix type:   
+     cmake ..
+   
+   In Windows type:
+     cmake .. -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release" 
 
 - Compile Mobile-C
 
-    make
+   In Unix type:   
+     make
+   
+   In Windows type
+     nmake -f Makefile
 
+- Install Mobile-C
+  
+   make install
 
 These commands will build the Mobile-C library as well as all of the 
 demonstration programs located in the 'demos' directory. For more
