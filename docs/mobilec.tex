@@ -132,7 +132,7 @@ mechatronic or embedded system to adapt to a dynamically changing environment.
 %\setcounter{page}{1}
 %\pagestyle{fancy}
 \chapter{Introduction}
-Parallel and distributed computing~\cite{Kumar}~\cite{Manber} are widely used 
+Parallel and distributed computing ~\cite{Kumar}~\cite{Manber} are widely used 
 in scientific and engineering fields, especially for time-critical or 
 time-consuming tasks.
 Parallel computing is typically carried out in dedicated multiprocessors with
@@ -221,6 +221,25 @@ include:
 \noindent
 (2) Embedded Ch version 6.3.0 or greater: It can be obtained from http://www.softintegration.com
 
+\noindent
+(3) CMake: It can be obtained from http://www.cmake.org
+
+\subsection{Setup of the\texttt{\_chrc} file}
+Instructions on how to properly setup Ch for compilation can be found in Section 1.1 of the ChSDK guide located in 
+CHHOME/docs/chsdk.pdf. CHHOME is the directory where Ch is installed.
+\textbf{It is recommended to test the compiler on the examples provided in the ChSDK guide before trying to 
+compile the Mobile-C library}.
+All the compilers tested in Ch are already setup in the \texttt{\_chrc} file. To enable a specific one, uncomment the 
+corresponding lines in the \texttt{\_chrc} file, as shown in the ChSDK guide.
+
+Mobile-C uses CMake as a build system. To enable the use of CMake from Ch, add the following line to the \texttt{\_path} environment variable:
+
+\begin{verbatim}
+_path = stradd(_path , ``<CMAKEDIR>/bin;'');
+\end{verbatim}
+
+Where \texttt{<CMAKEDIR>} is the directory where CMake is installed. To test if the \texttt{\_path} variable has been properly updated, restart Ch and type \texttt{cmake} from a Ch command shell.
+
 % }}} SUB: Prerequisites 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -230,7 +249,7 @@ include:
 
 \subsection{Install the Mobile-C library}
 The following commands will install the Mobile-C library in the system 
-directory for {\bf 32-bit} Unix systems. Type them from within a Ch terminal. 
+directory for {\bf 32-bit and 64-bit} Unix systems. Type them from within a Ch terminal. 
 The system directory for Unix systems is usually `/usr/local/lib' or 
   `/usr/lib' depending on your system.
 
@@ -256,7 +275,7 @@ these libraries to compile, but does not need them installed in
 order to run.
 
 Also note that the above commands will automatically compile all the included
-demos automatically after compiling the Mobile-C library. The demos will
+demos after compiling the Mobile-C library. The demos will
 run even if the 'make install' step is omitted.
 
 The `-DCMAKE\_INSTALL\_PREFIX' option can be used to specify the home directory to 
@@ -295,10 +314,14 @@ The following steps are suggested to build the Mobile-C library.
   Local Ch Startup File" menu item. The section in your \texttt{\_chrc} file
   which contains settings about
   your Visual C++ installation must be correct. 
+ Additional information on how to setup Ch for compilation 
+ are provided in Section 2.1.1. 
 \item Unpack the Mobile-C source code. Ensure that you have write permissions
   for the directory you are unpacking Mobile-C into, or you may encounter 
   compile-time errors. As mentioned in the previous section, we will refer
   to the unpacked directory as \texttt{<MCPACKAGE>}.
+  
+  If downloading Mobile-C from the git repository, this step can be skipped.
 \item Open a Ch terminal.
 \item Navigate to the \texttt{<MCPACKAGE>} directory in your Ch terminal. For
   example, if you unpacked Mobile-C to the \texttt{C:$\backslash$Mobile-C} directory, type
